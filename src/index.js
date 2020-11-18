@@ -1,6 +1,7 @@
 import "./styles.css";
 import API from "./js/fetchCountries"; 
 import templateCoutry from "./templates/country-card.hbs";
+import countriesToTen from "./templates/countries-to-ten.hbs"
 var debounce = require('lodash.debounce');
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
@@ -14,21 +15,22 @@ serchInputRef.addEventListener('input', debounce(onSearch, 500))
 
 function renderCountryCard(country) {   
     if (country.length === 1) {
-        templateCoutryRef.insertAdjacentHTML(templateCoutry(country));
+        templateCoutryRef.innerHTML = templateCoutry(country);
     } else if (country.length >= 2 && country.length <= 10) {
-       templateCoutryRef.insertAdjacentHTML(templateCoutry(country));
+       templateCoutryRef.innerHTML = countriesToTen(country);
     } else if (country.length > 10) { 
         pushError('Сделайте более специфичный запрос. Слишком много совпадений!!');
     }; 
     
 }
 
+
+
 function pushError(err) {
   error({
     text: `${err}`,
   });
 }
-
 
 
 function clearResult() { 
@@ -38,7 +40,6 @@ function clearResult() {
 function onSearch(e) { 
     e.preventDefault();
     const searchQuery = serchInputRef.value;
-    // console.log(searchQuery);
     if (searchQuery.length === 0) {
         clearResult();
         return;
@@ -50,9 +51,3 @@ function onSearch(e) {
 
     
 }
-
-// function makeCardsTemplate(Api) {
-//   return countryCard(Api);
-// }
-
-// templateCoutryRef.insertAdjacentHTML('afterBegin', makeCardsTemplate(Api));
