@@ -24,8 +24,6 @@ function renderCountryCard(country) {
     
 }
 
-
-
 function pushError(err) {
   error({
     text: `${err}`,
@@ -35,11 +33,15 @@ function pushError(err) {
 
 function clearResult() { 
     serchInputRef.innerHTML = '';
+    templateCoutryRef.innerHTML = '';
+    templateCoutryRef.innerHTML = '';
+    
 }
 
 function onSearch(e) { 
     e.preventDefault();
     const searchQuery = serchInputRef.value;
+    console.log(searchQuery)
     if (searchQuery.length === 0) {
         clearResult();
         return;
@@ -49,5 +51,4 @@ function onSearch(e) {
         .catch(error => pushError('Ошибка ввода, такой страны не существует'));
     }
 
-    
 }
