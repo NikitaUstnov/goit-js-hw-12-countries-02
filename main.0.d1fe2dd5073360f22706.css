@@ -1,0 +1,1 @@
+body{box-sizing:border-box;margin:0;padding:40px;width:100vw;height:100h;font-family:sans-serif;display:flex;flex-direction:column;align-items:center}img{display:block;width:350px;height:auto}input{width:200px;height:30px;border-radius:6px;border-color:grey;outline:0}input:focus{border-color:#0ff}.countries-group{font-size:30px;list-style:square}
